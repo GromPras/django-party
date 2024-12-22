@@ -1,5 +1,10 @@
 from django.urls import path
 
+from party.views.new_party_views import (
+    partial_check_invitation,
+    partial_check_party_date,
+)
+
 from . import views
 
 
@@ -21,7 +26,17 @@ party_detail_urlpatterns = [
 ]
 
 new_party_urlpatterns = [
-    path("party/new/", views.page_new_party, name="page_new_party")
+    path("party/new/", views.page_new_party, name="page_new_party"),
+    path(
+        "party/new/check-date/",
+        views.partial_check_party_date,
+        name="partial_check_party_date",
+    ),
+    path(
+        "party/new/check-invitation",
+        views.partial_check_invitation,
+        name="partial_check_invitation",
+    ),
 ]
 
 urlpatterns = (
