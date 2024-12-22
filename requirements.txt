@@ -1,6 +1,8 @@
 asgiref==3.8.1
+crispy-bootstrap4==2024.10
 django==5.1.2
 django-browser-reload==1.17.0
+django-crispy-forms==2.3
 iniconfig==2.0.0
 packaging==24.2
 pluggy==1.5.0
