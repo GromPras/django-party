@@ -1,5 +1,6 @@
 from django.urls import path
 
+from party.views import gift_registry_views
 from party.views.new_party_views import (
     partial_check_invitation,
     partial_check_party_date,
@@ -39,6 +40,12 @@ new_party_urlpatterns = [
     ),
 ]
 
+gift_registry_urlpatterns = [
+    path("party/<uuid:party_uuid>/gifts", views.GiftRegistryPage.as_view(), name="page_gift_registry"),
+    path("gifts/<uuid:gift_uuid>/", views.GiftDetailPartial.as_view(), name="partial_gift_detail"),
+    path("gifts/<uuid:gift_uuid>/form/", views.GiftUpdateFormPartial.as_view(), name="partial_gift_update")
+]
+
 urlpatterns = (
-    list_parties_urlpatterns + party_detail_urlpatterns + new_party_urlpatterns
+    list_parties_urlpatterns + party_detail_urlpatterns + new_party_urlpatterns+ gift_registry_urlpatterns
 )
